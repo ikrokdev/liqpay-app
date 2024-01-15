@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include liqpay_app *.css
+recursive-include liqpay_app *.csv
+recursive-include liqpay_app *.html
+recursive-include liqpay_app *.ico
+recursive-include liqpay_app *.js
+recursive-include liqpay_app *.json
+recursive-include liqpay_app *.md
+recursive-include liqpay_app *.png
+recursive-include liqpay_app *.py
+recursive-include liqpay_app *.svg
+recursive-include liqpay_app *.txt
+recursive-exclude liqpay_app *.pyc
