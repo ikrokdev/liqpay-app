@@ -51,6 +51,7 @@ class LiqPaySettings(Document):
         :param text: comment for customer
         :return: url of checkout
         """
+        print(kwargs)
         data = {key: value for key, value in self.data_storage.items()}
         if isinstance(description, bytes):
             description = description.decode('utf-8')
@@ -60,9 +61,13 @@ class LiqPaySettings(Document):
         data["language"] = "uk"
         data["description"] = description
         data["order_id"] = order_id
-        data["result_url"] = self.result_url + "/all-products"
         
-        callback_url = f"{self.callback_url}/api/method/liqpay_app.liqpay_integration.doctype.liqpay_settings.liqpay_settings.callback_handler"
+        payment_request = frappe.get_doc("Payment Request", {'name': order_id})
+        sales_order_name = payment_request.reference_name
+        
+        data["result_url"] = f"{frappe.utils.get_url('orders')}/{sales_order_name}"
+        
+        callback_url = f"{frappe.utils.get_url()}/api/method/liqpay_app.liqpay_integration.doctype.liqpay_settings.liqpay_settings.callback_handler"
         data["server_url"] = callback_url
         if product_name:
             data["product_name"] = product_name
