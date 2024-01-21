@@ -63,7 +63,7 @@ app_license = "MIT"
 # Installation
 # ------------
 
-# before_install = "liqpay_app.install.before_install"
+before_install = "liqpay_app.install.before_install"
 # after_install = "liqpay_app.install.after_install"
 
 # Uninstallation
