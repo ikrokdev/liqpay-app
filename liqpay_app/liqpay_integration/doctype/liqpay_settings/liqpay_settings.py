@@ -22,8 +22,6 @@ class LiqPaySettings(Document):
             "public_key": self.public_key
         }
         self.logger = frappe.logger()
-        if self.callback_url.endswith("/"):
-            self.callback_url = self.callback_url[:-1]
         
     def validate_transaction_currency(self, currency):
         if currency not in ["UAH", "USD", "EUR"]:
