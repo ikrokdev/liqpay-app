@@ -51,7 +51,6 @@ class LiqPaySettings(Document):
         :param text: comment for customer
         :return: url of checkout
         """
-        print(kwargs)
         data = {key: value for key, value in self.data_storage.items()}
         if isinstance(description, bytes):
             description = description.decode('utf-8')
@@ -114,10 +113,11 @@ def callback_handler(data: str):
     order_id = decoded_data.get('order_id')
     
     if status == "success":
-        print(f"Payment of order {order_id} succeed")
-        
+    
         payment_request = frappe.get_doc("Payment Request", order_id)
         payment_request.set_as_paid()
+        print(f"Payment of order {order_id} succeed")
+        
         
         
     
