@@ -30,6 +30,6 @@ def after_install():
     }
     new_payment_gateway = frappe.get_doc(liqpay_payment_gateway_dict)
     new_payment_gateway.save()
-    
+    frappe.db.commit()
 
     
